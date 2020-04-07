@@ -34,16 +34,7 @@ DropDown.prototype = {
     }
 };
 
-$(function () {
-    // create new variable for each menu
-    var dd1 = new DropDown($('#noble-gases'));
-    var dd2 = new DropDown($('#graph-type'));
-    // var dd2 = new DropDown($('#other-gases'));
-    $(document).click(function () {
-        // close menu on document click
-        $('.wrap-drop').removeClass('active');
-    });
-});
+
 var element = document.querySelector("body");
 
 var open = true;
@@ -241,5 +232,15 @@ function draw()
 $("document").ready(()=>
   {
     setWorld();
+    $(function () {
+        // create new variable for each menu
+        var dd1 = new DropDown($('#noble-gases'));
+        var dd2 = new DropDown($('#graph-type'));
+        // var dd2 = new DropDown($('#other-gases'));
+        $(document).click(function () {
+            // close menu on document click
+            $('.wrap-drop').removeClass('active');
+        });
+    });
   }
 );
