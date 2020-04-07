@@ -12,10 +12,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
 
   <style>
+  .hidden{
+    display:none;
+  }
   </style>
   </head>
   <body >
-    <div  style="height:100vh; width:100%; background-color:white;">
+    <div  id="mainContent" class="hidden" style=" height:100vh; width:100%; background-color:white;">
       <div id="sidebar" class="sidebar" style="z-index: 2; height:100vh; width:auto;  position:fixed; right:0px;">
         <div style="">
         <div id="sidebar-btn" style="border-radius: 5px 0px 0px 5px;position: relative; top: 50px; left: -50px; width:50px; height:50px; background-color:#039BE5; text-align: center;" class="align-middle" >
@@ -60,6 +63,7 @@
 
 
     </div>
+    <div id="noti" style="width:100%; text-align:center;"> <img src="img/rotate.png" style="width: 90%; margin-top: 100px;"></img> <h2 style="margin-top:30px; font-family: 'Roboto', sans-serif; color:#C39BD3;"> Please rotate to landscape mode. </h2></div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -67,5 +71,17 @@
     <script src="js/helper.js"></script>
     <script src="js/graph.js"></script>
     <script src="js/graph_file.js"></script>
+    <script>
+    function checkOrentation()
+    {
+      if(window.innerHeight >  window.innerWidth){
+        setTimeout(checkOrentation,500);
+      }else{
+        $("#noti").addClass("hidden");
+        $("#mainContent").removeClass("hidden");
+      }
+    }
+    checkOrentation();
+     </script>
   </body>
 </html>
