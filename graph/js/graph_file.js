@@ -127,6 +127,18 @@ function setWorld()
              </div>
          </div><br>
          `);
+
+        $("#noble-gases").html(
+          `
+          <span>Deaths due to CoVID19</span>
+          <ul  class="drop">
+            <li onclick="setType('totalDeaths')" class="selected"><a>Deaths due to CoVID19 </a></li>
+            <li onclick="setType('totalRecovered')"><a>Recovered from CoVID19</a></li>
+            <li onclick="setType('totalInfections')"><a>Infected from CoVID19</a></li>
+
+          </ul>
+          `);
+    setType('totalDeaths');
   graph="world"
 }
 function setIndia()
@@ -135,32 +147,88 @@ function setIndia()
   $("#world").removeClass("selected");
   $("#checkboxs").html(`
   <div style="font-size:20px;margin-right: 35px;margin-bottom: 10px;" class="pretty p-default p-fill">
-       <input type="checkbox" />
+       <input id="AndhraPradesh" type="checkbox" />
        <div style="width: 100px;" class="state p-info">
-           <label>Maharashtra</label>
+           <label>Andra Pradesh</label>
        </div>
    </div>
    <div style="font-size:20px;margin-bottom: 10px;" class="pretty p-default p-fill">
-        <input type="checkbox" />
+        <input id="Delhi" type="checkbox" />
         <div style="width: 100px;" class="state p-info">
             <label>Delhi</label>
         </div>
     </div><br>
 
    <div style="font-size:20px;margin-right: 25px; margin-bottom: 10px;" class="pretty p-default p-fill">
-        <input type="checkbox" />
+        <input id ="Gujarat" type="checkbox" />
         <div style="width: 100px;" class="state p-info">
-            <label>Telengana</label>
+            <label>Gujarat</label>
         </div>
     </div>
     <div style="font-size:20px;  margin-bottom: 10px; margin-left:10px;"  class="pretty p-default p-fill">
-         <input type="checkbox" />
+         <input id="JammuAndKashmir" type="checkbox" />
          <div style="width: 100px;" class="state p-info">
-             <label>U.P</label>
+             <label>J & K</label>
          </div>
      </div><br>
-
+     <div style="font-size:20px;margin-right: 25px; margin-bottom: 10px;" class="pretty p-default p-fill">
+          <input id ="Karnataka" type="checkbox" />
+          <div style="width: 100px;" class="state p-info">
+              <label>Karnataka</label>
+          </div>
+      </div>
+      <div style="font-size:20px;  margin-bottom: 10px; margin-left:10px;"  class="pretty p-default p-fill">
+           <input id="Kerala" type="checkbox" />
+           <div style="width: 100px;" class="state p-info">
+               <label>Kerala</label>
+           </div>
+       </div><br>
+       <div style="font-size:20px;margin-right: 25px; margin-bottom: 10px;" class="pretty p-default p-fill">
+            <input id ="MadhyaPradesh"" type="checkbox" />
+            <div style="width: 100px;" class="state p-info">
+                <label>MadhyaPradesh"</label>
+            </div>
+        </div>
+        <div style="font-size:20px;  margin-bottom: 10px; margin-left:10px;"  class="pretty p-default p-fill">
+             <input id="Maharashtra" type="checkbox" />
+             <div style="width: 100px;" class="state p-info">
+                 <label>Maharashtra</label>
+             </div>
+         </div><br>
+         <div style="font-size:20px;margin-right: 25px; margin-bottom: 10px;" class="pretty p-default p-fill">
+              <input id ="Rajasthan" type="checkbox" />
+              <div style="width: 100px;" class="state p-info">
+                  <label>Rajasthan</label>
+              </div>
+          </div>
+          <div style="font-size:20px;  margin-bottom: 10px; margin-left:10px;"  class="pretty p-default p-fill">
+               <input id="TamilNadu" type="checkbox" />
+               <div style="width: 100px;" class="state p-info">
+                   <label>TamilNadu</label>
+               </div>
+           </div><br>
+           <div style="font-size:20px;margin-right: 25px; margin-bottom: 10px;" class="pretty p-default p-fill">
+                <input id ="Telengana"" type="checkbox" />
+                <div style="width: 100px;" class="state p-info">
+                    <label>Telengana</label>
+                </div>
+            </div>
+            <div style="font-size:20px;  margin-bottom: 10px; margin-left:10px;"  class="pretty p-default p-fill">
+                 <input id="UttarPradesh" type="checkbox" />
+                 <div style="width: 100px;" class="state p-info">
+                     <label>UttarPradesh</label>
+                 </div>
+             </div><br>
          `);
+     $("#noble-gases").html(
+       `
+       <span>Infections due to CoVID19</span>
+       <ul  class="drop">
+            <li onclick="setType('totalInfections')" class="selected"><a>Infected from CoVID19</a></li>
+
+       </ul>
+       `);
+    setType('totalInfections');
   graph="india"
 }
 

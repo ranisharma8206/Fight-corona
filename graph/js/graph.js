@@ -164,6 +164,13 @@ function start()
     lgraph.distroy();
     lgraph = null;
   }
+  availableStates.forEach(c =>
+    {
+      if($("#"+c).is(":checked")){
+        selectedCountries.push(c);
+      }
+    });
+
   console.log(type);
   lgraph = new lineGraph("lineGraph",data,type,selectedCountries,"date");
   lgraph.initAnimation();
