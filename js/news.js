@@ -23,7 +23,7 @@ function news(title,author,url,img,date,desc){
 var news_counter = 0;
 function populateNews(){
 
-  for(var i=0;i<12 && i<raw_news["totalResults"];i++)
+  for(var i=0;i<6 && i<raw_news["totalResults"];i++)
   {
     var n = raw_news["articles"][i];
     $("#news").append(news(n["title"],n["source"]["name"],n["url"],n["urlToImage"],n["publishedAt"],n["description"]));
