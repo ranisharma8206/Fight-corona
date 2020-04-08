@@ -20,16 +20,24 @@ function news(title,author,url,img,date,desc){
          </div>
        </div>`
 }
-
+var news_counter = 0;
 function populateNews(){
 
-  var count =0;
-  raw_news["articles"].forEach(n =>
-    {
-      if(count<12 && count<raw_news["totalResults"])
-      {
-        $("#news").append(news(n["title"],n["source"]["name"],n["url"],n["urlToImage"],n["publishedAt"],n["description"]));
-        count++;
-      }
-    });
+  for(var i=0;i<12 && i<raw_news["totalResults"];i++)
+  {
+    var n = raw_news["articles"][i];
+    $("#news").append(news(n["title"],n["source"]["name"],n["url"],n["urlToImage"],n["publishedAt"],n["description"]));
+    news_counter++;
+  }
+
+}
+function moreNews()
+{
+  console.log("More News");
+  for(var i=news_counter; i<raw_news["totalResults"];i++)
+  {
+    var n = raw_news["articles"][i];
+    $("#news").append(news(n["title"],n["source"]["name"],n["url"],n["urlToImage"],n["publishedAt"],n["description"]));
+    news_counter++;
+  }
 }
