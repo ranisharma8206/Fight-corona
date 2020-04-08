@@ -48,29 +48,29 @@ var state_id_mapping =
     ]
 
 var raw_state_data = null;
+var raw_district_data =null;
 var state_count = [];
 
 function dataFetched()
 {
   process_raw_data();
+  updateCounters();
   state_count.pop(); //Removes unknown data
   console.log(state_count);
   colorGraph();
-
+  setupModal();
 }
 
 function process_raw_data()
 {
-  raw_state_data.forEach(state_data =>
+
+  raw_state_data["data"]["statewise"].forEach(state_data =>
     {
-      var count = 0;
-      var delta = 0;
-      state_data["districtData"].forEach( d =>
-        {
-        count +=d["confirmed"];
-        delta +=d["delta"]["confirmed"];
-        });
-      var data = {"state":state_data["state"],"color":getColor(count),"state_id":getStateIDFromName(state_data["state"]),"confirmed":count,"delta":delta};
+      var confirmed = state_data["confirmed"];
+      var recovered = state_data["recovered"];
+      var active = state_data["active"];
+      var deaths = state_data["deaths"];
+      var data = {"state":state_data["state"],"color":getColor(confirmed),"state_id":getStateIDFromName(state_data["state"]),"confirmed":confirmed,"deaths":deaths,"active":active,"recovered":recovered};
       state_count.push(data);
     });
 }
@@ -123,10 +123,75 @@ function colorGraph(){
     });
 }
 
-console.log()
+function setupModal()
+{
+
+}
+function stateClick(state_id)
+{
+  var state_name = state_id_mapping.find(state => state["id"] == state_id)["state"];
+  modalHandle(state_name);
+}
+
+function districtDataFetched(){}
+
+function getCases(state_name)
+{
+
+  var confirmed = state_count.find(state => state["state"] == state_name)["confirmed"];
+  var recovered = state_count.find(state => state["state"] == state_name)["recovered"];
+  var deaths = state_count.find(state => state["state"] == state_name)["deaths"];
+  var active = state_count.find(state => state["state"] == state_name)["active"];
+  return {
+      "confirmed":confirmed,
+      "recovered":recovered,
+      "deaths":deaths,
+      "active":active
+    }
+
+}
+
+function modalHandle(state_name)
+{
+    console.log("CLICKED ON "+state_name);
+    var cases = getCases(state_name);
+  var content =
+  `
+  <div class="modal-header">
+      <h2 class="modal-title">${state_name}</h5>
+      <button type="button" class="fechar_hover close" data-dismiss="modal">&times;</button>
+  </div>
+  <div class="modal-body">
+  <h3> Confirmed Cases : ${cases["confirmed"]}  </h3>
+  <h3> Active Cases : ${cases["active"]}  </h3>
+  <h3> Recovered Cases : ${cases["recovered"]}  </h3>
+  <h3> Deaths : ${cases["deaths"]}  </h3>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+  </div>
+  `
+  $("#statePopUpContent").html(content);
+  $("#statePopUp").modal("show");
+
+}
+
+function updateCounters(){
+  $("#totalCases").html(raw_state_data["data"]["total"]["confirmed"]);
+  $("#recovered").html(raw_state_data["data"]["total"]["recovered"]);
+  $("#deaths").html(raw_state_data["data"]["total"]["deaths"]);
+}
+
 fetch("https://api.covid19india.org/v2/state_district_wise.json")
   .then(response => response.json())
   .then(d => {
-    raw_state_data= d;
-    dataFetched();
+    raw_district_data= d;
+    districtDataFetched();
+  });
+fetch("https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise")
+    .then(response => response.json())
+    .then(d => {
+      raw_state_data= d;
+      dataFetched();
   });
