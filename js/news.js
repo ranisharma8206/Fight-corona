@@ -11,7 +11,7 @@ fetch("/news/raw.json")
 function news(title,author,url,img,date,desc){
   return `<div class="col-md-6 col-lg-6 mb-4 mb-lg-4">
          <div class="h-entry">
-           <a href="blog-single.html"><img src="${img}" alt="${title}" class="img-fluid"></a>
+           <a href="${url}"><img src="${img}" alt="${title}" class="img-fluid"></a>
            <div class="h-entry-inner">
              <h2 class="font-size-regular"><a href="${url}">${title}</a></h2>
              <div class="meta mb-4">by ${author} <span class="mx-2">•</span> ${date}</div>
