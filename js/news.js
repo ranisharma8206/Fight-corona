@@ -1,6 +1,6 @@
 var raw_news=null;
 
-fetch("http://www.fightcovid19.xyz/news/raw.json")
+fetch("/news/raw.json")
   .then(response => response.json())
   .then(d => {
     raw_news = d;
