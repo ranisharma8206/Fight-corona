@@ -61,6 +61,31 @@ $("#sidebar-btn").click(function(){
   console.log("clicked");
 });
 
+$("#show_graph_btn").click(function(){
+
+  element.requestFullscreen()
+  .then(function() {
+  	// element has entered fullscreen mode successfully
+  })
+  .catch(function(error) {
+  	// element could not enter fullscreen mode
+  	// error message
+  	console.log(error.message);
+  });
+
+  if(open == true){
+    $("#sidebar").animate({right:'-290px'});
+    open = false;
+  }else{
+    $("#sidebar").animate({right:'0px'});
+    open = true;
+  }
+
+  console.log("clicked");
+});
+
+
+
 
 var graph="world";
 function setWorld()
@@ -143,10 +168,10 @@ function setIndia()
            <label>AP</label>
        </div>
    </div>
-   <div style="font-size:20px;  margin-bottom: 10px;"  class="pretty p-default p-fill">
-        <input id="UttarPradesh" type="checkbox" />
+   <div style="font-size:20px;margin-bottom: 10px;margin-right:3px;" class="pretty p-default p-fill">
+        <input id="Delhi" type="checkbox" />
         <div style="width: 100px;" class="state p-info">
-            <label>UttarPradesh</label>
+            <label>Delhi</label>
         </div>
     </div><br>
 
@@ -200,19 +225,7 @@ function setIndia()
                    <label>Tamil Nadu</label>
                </div>
            </div><br>
-           <div style="font-size:20px;margin-bottom: 10px;margin-right:3px;" class="pretty p-default p-fill">
-                <input id="Delhi" type="checkbox" />
-                <div style="width: 100px;" class="state p-info">
-                    <label>Delhi</label>
-                </div>
-            </div>
 
-            <div style="font-size:20px; margin-bottom: 10px;" class="pretty p-default p-fill">
-                 <input id ="Telengana"" type="checkbox" />
-                 <div style="width: 100px;" class="state p-info">
-                     <label>Telengana</label>
-                 </div>
-             </div><br>
          `);
      $("#noble-gases").html(
        `
