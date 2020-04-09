@@ -53,9 +53,18 @@ $("#sidebar-btn").click(function(){
   if(open == true){
     $("#sidebar").animate({right:'-290px'});
     open = false;
+    $("#close_icon").css("display", "none");
+    $("#open_icon").css("display", "block");
+    $("#close_icon").css("padding-top", "4px");
+    $("#open_icon").css("padding-top", "4px");
+
   }else{
     $("#sidebar").animate({right:'0px'});
     open = true;
+    $("#close_icon").css("display", "block");
+    $("#open_icon").css("display", "none");
+    $("#close_icon").css("padding-top", "4px");
+    $("#open_icon").css("padding-top", "4px");
   }
 
   console.log("clicked");
@@ -76,9 +85,18 @@ $("#show_graph_btn").click(function(){
   if(open == true){
     $("#sidebar").animate({right:'-290px'});
     open = false;
+    $("#close_icon").css("display", "none");
+    $("#open_icon").css("display", "block");
+    $("#close_icon").css("padding-top", "4px");
+    $("#open_icon").css("padding-top", "4px");
+
   }else{
     $("#sidebar").animate({right:'0px'});
     open = true;
+    $("#close_icon").css("display", "block");
+    $("#open_icon").css("display", "none");
+    $("#close_icon").css("padding-top", "4px");
+    $("#open_icon").css("padding-top", "4px");
   }
 
   console.log("clicked");
